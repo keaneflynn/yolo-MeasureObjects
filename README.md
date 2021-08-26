@@ -9,7 +9,7 @@ In this project, we will be using YOLOv4 object detection combined with an Intel
 ## Current Use
 In its current working state, this program will detect objects from whatever YOLO neural network you choose (should work for Yolov3, Yolov3-tiny, Yolov4, and Yolov4-tiny *untested*) and will place a bounding box around the object, label it, give a confidence score, and show how wide the object is in millimeters. This can easily be swapped over to object height by substituting yd.object_height() for yd.object_length() in the depth_detect.py file. Unfortunately I have only been able to test this on Windows operating system as Intel does not support this camera use with Mac OS.
 
-To run the program simply move into the project directory in your terminal (I recommend Powershell), and type out the following:
+To run the program simply move into the project directory in your terminal (I recommend Powershell), and type out the following:                      
       ``` python depth_detect.py ```
 
 You will then be prompted to hit enter to capture an image and allow the program to proceed forward. Each subsequent time the user hits enter, it will capture a new image and run the detection and measurement on a new image generated at the time you hit the enter button. To exit the program, simply hit control + c to keyboard interrupt the program. It currently has an issue of hanging up the terminal after it quits but I will fix that as soon as I can.
