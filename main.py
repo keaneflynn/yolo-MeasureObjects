@@ -2,9 +2,10 @@ import cv2
 from argparse import ArgumentParser
 from yolo_detect import *
 from realsense import *
+from json_output import *
 
 def main():
-    parser = argparse.ArgumentParser(description='measure detected objects using YOLO')
+    parser = ArgumentParser(description='measure detected objects using YOLO')
     parser.add_argument('samplename', type=str, help='unique name or identifier for the sample of data you are collecting')
     args = parser.parse_args()
 
