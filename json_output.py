@@ -2,13 +2,13 @@ import json
 from datetime import datetime
 
 class FileOutput:
-    def __init__(self, samplename, self.object_class, self.object_confidence, self.object_length_mm, self.object_height_mm):
+    def __init__(self, samplename, main_dataVector):
         self.date = str(datetime.now())
         self.samplename = samplename 
-        self.classname = self.object_class 
-        self.confidence = self.object_confidence 
-        self.length = self.object_length_mm 
-        self.height = self.object_height_mm
+        self.classname = main_dataVector[0] 
+        self.confidence = main_dataVector[1] 
+        self.length = main_dataVector[2] 
+        self.height = main_dataVector[3]
 
         vector_inputs = [self.date,
                          self.samplename,

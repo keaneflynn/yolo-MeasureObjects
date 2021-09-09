@@ -10,7 +10,6 @@ class YoloDetections:
         self.focal_length = 1.88
         self.image_width_pixels = 1280
         self.image_height_pixels = 720
-        
 
         self.class_names = []
         with open("yolo_BlueMug.names", "r") as f:
@@ -68,19 +67,22 @@ class YoloDetections:
     def object_height(self):
         for i in range(self.detection_count):
             self.object_height_mm.append((self.object_distances[i] * self.box_height[i] * self.sensor_height_mm) / (self.focal_length * self.image_height_pixels))
-            print(self.object_height_mm)
         return self.object_height_mm
 
-        print(self.object_height)
+        print(self.object_height_mm)
 
     def draw_output(self, color_frame):
         for (classid, score, box, length) in zip(self.object_class, self.object_confidence, self.object_boxes, self.object_length_mm):
             color = self.colors[int(classid) % len(self.colors)]
             label = "%s : %f, %i mm wide" % (self.class_names[classid[0]], score, round(length))
             cv2.rectangle(color_frame, box, color, 2)
-            cv2.putText(color_frame, label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)    
+            cv2.putText(color_frame, label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+    def json_data(self):
+        main_dataVector = (self.object_class,
+                           self.object_confidence,
+                           self.object_length_mm,
+                           self.object_height_mm)
+        return(main_dataVector)
+        #print(main_dataVector)
         
-        
-        
-        
-            
