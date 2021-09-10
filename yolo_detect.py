@@ -2,7 +2,7 @@ import cv2
 
 class YoloDetections:
     def __init__(self):
-        self.confidence = 0.1
+        self.confidence = 0.3
         self.nms = 0.2
         self.colors = [(255, 255, 0), (0, 255, 255), (0, 255, 0), (255, 0, 0)]
         self.sensor_width_mm = 3.68 #3.896
@@ -84,5 +84,4 @@ class YoloDetections:
                            self.object_length_mm,
                            self.object_height_mm)
         return(main_dataVector)
-        #print(main_dataVector)
         

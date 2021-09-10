@@ -22,6 +22,7 @@ def main():
         yd.object_length()
         yd.object_height()
         yd.draw_output(color_frame)
+        main_dataVector = yd.json_data()
 
         #fo = FileOutput(args.samplename, main_dataVector)
         
