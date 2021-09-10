@@ -10,12 +10,12 @@ class FileOutput:
         self.length = main_dataVector[2] 
         self.height = main_dataVector[3]
 
-        vector_inputs = [self.date,
+        vector_inputs = (self.date,
                          self.samplename,
                          self.classname,
                          self.confidence,
                          self.length,
-                         self.height]
+                         self.height)
 
     def test_json(self):
         test = print(vector_inputs)
@@ -34,4 +34,4 @@ class FileOutput:
             "height_mm": self.height[i],
             }
 
-            return json.dumps(json_out, indent=4)
+            return json.dumps(json_out)

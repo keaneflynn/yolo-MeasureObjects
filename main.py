@@ -23,11 +23,8 @@ def main():
         yd.object_height()
         yd.draw_output(color_frame)
 
-        #fo = FileOutput(args.samplename,
-        #                self.object_class,
-        #                self.object_confidence,
-        #                self.object_length_mm,
-        #                self.object_height_mm)
+        #fo = FileOutput(args.samplename, main_dataVector)
+        
         #fo.test_json()
 
         cv2.imshow("color frame", color_frame)
