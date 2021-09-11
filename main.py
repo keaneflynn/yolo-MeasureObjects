@@ -22,11 +22,11 @@ def main():
         yd.object_length()
         yd.object_height()
         yd.draw_output(color_frame)
-        main_dataVector = yd.json_data()
+        main_dataVector, class_list = yd.json_data()
 
-        #fo = FileOutput(args.samplename, main_dataVector)
-        
-        #fo.test_json()
+        fo = FileOutput(args.samplename, main_dataVector)
+        #fo.test_json(class_list)
+        fo.to_json(class_list)
 
         cv2.imshow("color frame", color_frame)
         

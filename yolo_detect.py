@@ -12,11 +12,11 @@ class YoloDetections:
         self.image_height_pixels = 720
 
         self.class_names = []
-        with open("yolo_BlueMug.names", "r") as f:
+        with open("model_data/coco.names.txt", "r") as f:
             self.class_names = [cname.strip() for cname in f.readlines()]
         
         #loading yolo net
-        net = cv2.dnn.readNet("yolov4-tiny_BlueMug.weights","yolov4-tiny_BlueMug.cfg")
+        net = cv2.dnn.readNet("model_data/yolov4-tiny.weights","model_data/yolov4-tiny.cfg.txt")
         #net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA) #Use with GPU?
         net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
         #net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA_FP16) #Use with GPU?
@@ -69,19 +69,18 @@ class YoloDetections:
             self.object_height_mm.append((self.object_distances[i] * self.box_height[i] * self.sensor_height_mm) / (self.focal_length * self.image_height_pixels))
         return self.object_height_mm
 
-        print(self.object_height_mm)
-
     def draw_output(self, color_frame):
         for (classid, score, box, length) in zip(self.object_class, self.object_confidence, self.object_boxes, self.object_length_mm):
             color = self.colors[int(classid) % len(self.colors)]
-            label = "%s : %f, %i mm wide" % (self.class_names[classid[0]], score, round(length))
+            frame_label = "%s : %f, %i mm wide" % (self.class_names[classid[0]], score, round(length))
             cv2.rectangle(color_frame, box, color, 2)
-            cv2.putText(color_frame, label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
+            cv2.putText(color_frame, frame_label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+        #print(self.object_class)
     def json_data(self):
+        class_list = self.class_names
         main_dataVector = (self.object_class,
                            self.object_confidence,
                            self.object_length_mm,
                            self.object_height_mm)
-        return(main_dataVector)
+        return(main_dataVector, class_list)
         
