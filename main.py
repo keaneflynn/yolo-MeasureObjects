@@ -25,11 +25,9 @@ def main():
         main_dataVector, class_list = yd.json_data()
 
         fo = FileOutput(args.samplename, main_dataVector)
-        #fo.test_json(class_list)
         fo.to_json(class_list)
 
         cv2.imshow("color frame", color_frame)
-        
         cv2.waitKey(1)
         
     rs.release_frame()

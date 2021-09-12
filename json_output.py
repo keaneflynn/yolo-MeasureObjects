@@ -1,10 +1,12 @@
 import json
 from datetime import datetime
 import os
+import numpy as np
 
 class FileOutput:
     def __init__(self, samplename, main_dataVector):
         self.date = str(datetime.now())
+        self.filedate = datetime.now().strftime("%m-%d-%Y-%H-%M-%S")
         self.samplename = samplename 
         self.classname = [i[0] for i in main_dataVector[0]]
         self.confidence = [i[0] for i in main_dataVector[1]] 
@@ -34,15 +36,15 @@ class FileOutput:
         indexList_length = len(self.classname)
         directory = 'outfile'
         for i in range(indexList_length):
-            filename = self.samplename+'_'+str(i)
+            filename = self.samplename+'_'+str(self.filedate)+'_'+str(i+1)
             json_out = {
             "date": self.date,
             "sample_name": self.samplename,
             "class_name": class_list[self.classname[i]],
-            "confidence": self.confidence[i],
-            "length_mm": self.length[i],
-            "height_mm": self.height[i],
+            "confidence": np.float64(self.confidence[i]),
+            "length_mm": np.float64(self.length[i]),
+            "height_mm": np.float64(self.height[i]),
             }
             
             with open("{}/{}.json".format(directory, filename), 'w') as f:
-                json.dump(str(json_out), f)
+                json.dump(json_out, f)
