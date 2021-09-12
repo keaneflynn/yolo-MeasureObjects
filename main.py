@@ -6,7 +6,7 @@ from json_output import *
 
 def main():
     parser = ArgumentParser(description='measure detected objects using YOLO')
-    parser.add_argument('samplename', type=str, help='unique name or identifier for the sample of data you are collecting')
+    parser.add_argument('--samplename', type=str, help='unique name or identifier for the sample of data you are collecting')
     args = parser.parse_args()
 
     while True:
