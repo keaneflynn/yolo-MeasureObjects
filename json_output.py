@@ -5,7 +5,7 @@ import numpy as np
 
 class FileOutput:
     def __init__(self, samplename, main_dataVector):
-        self.date = str(datetime.now())
+        self.date = str(datetime.now().isoformat())
         self.filedate = datetime.now().strftime("%m-%d-%Y-%H-%M-%S")
         self.samplename = samplename 
         self.classname = [i[0] for i in main_dataVector[0]]
