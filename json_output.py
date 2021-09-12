@@ -45,4 +45,4 @@ class FileOutput:
             }
             
             with open("{}/{}.json".format(directory, filename), 'w') as f:
-                return json.dump(str(json_out), f)
+                json.dump(str(json_out), f)
