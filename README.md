@@ -11,7 +11,7 @@ In its current working state, this program will detect objects from whatever YOL
 Unfortunately I have only been able to test this on Windows operating system as Intel does not support this camera use with Mac OS.
 
 To run the program simply move into the project directory in your terminal (I recommend Powershell), and type out the following:                      
-      ``` python depth_detect.py --samplename ```
+      ``` python main.py --samplename ```
 
 You will then be prompted to hit enter to capture an image and allow the program to proceed forward. Each subsequent time the user hits enter, it will capture a new image and run the detection and measurement on a new image generated at the time you hit the enter button. To exit the program, simply hit control + c to keyboard interrupt the program. It currently has an issue of hanging up the terminal after it quits but I will fix that as soon as I can.
 
