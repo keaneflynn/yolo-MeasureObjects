@@ -7,11 +7,11 @@ In this project, we will be using YOLOv4 object detection combined with an Intel
 *The above image shows a blue camp mug detected based on a crudely trained yolov4-tiny neural network that is measuring the width of the mug at 129mm when I have ground truthed the width of the mug, including the handle, to be 128mm*
 
 ## Current Use
-In its current working state, this program will detect objects from whatever YOLO neural network you choose (should work for Yolov3, Yolov3-tiny, Yolov4, and Yolov4-tiny *untested*) and will display the image and place a bounding box around the object, label it, give a confidence score, and show how wide the object is in millimeters (this can easily be swapped over to object height by substituting yd.object_height() for yd.object_length() in the depth_detect.py file). Additionally, it will kick out a .json file for every object detected in the frame, so if there are 4 objects it will return 4 .json files with relevant metrics. The .json files will have the following format: samplename_MM-DD-YYYY-HH-MM-SS_#.json.
+In its current working state, this program will detect objects from whatever YOLO neural network you choose (should work for Yolov3*, Yolov3-tiny*, Yolov4, and Yolov4-tiny   * *untested*) and will display the image and place a bounding box around the object, label it, give a confidence score, and show how wide the object is in millimeters (this can easily be swapped over to object height by substituting yd.object_height() for yd.object_length() in the depth_detect.py file). Additionally, it will kick out a .json file for every object detected in the frame, so if there are 4 objects it will return 4 .json files with relevant metrics. The .json file names will have the following format: samplename_MM-DD-YYYY-HH-MM-SS_#.json.
 Unfortunately I have only been able to test this on Windows operating system as Intel does not support this camera use with Mac OS.
 
 To run the program simply move into the project directory in your terminal (I recommend Powershell), and type out the following:                      
-      ``` python depth_detect.py --samplename ```
+      ``` python main.py --samplename ```
 
 You will then be prompted to hit enter to capture an image and allow the program to proceed forward. Each subsequent time the user hits enter, it will capture a new image and run the detection and measurement on a new image generated at the time you hit the enter button. To exit the program, simply hit control + c to keyboard interrupt the program. It currently has an issue of hanging up the terminal after it quits but I will fix that as soon as I can.
 
