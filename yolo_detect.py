@@ -5,8 +5,8 @@ class YoloDetections:
         self.confidence = 0.3
         self.nms = 0.2
         self.colors = [(255, 255, 0), (0, 255, 255), (0, 255, 0), (255, 0, 0)]
-        self.sensor_width_mm = 3.68 #3.896
-        self.sensor_height_mm = 2.1
+        self.sensor_width_mm = 3.60
+        self.sensor_height_mm = 2.10
         self.focal_length = 1.88
         self.image_width_pixels = 1280
         self.image_height_pixels = 720
@@ -17,9 +17,9 @@ class YoloDetections:
         
         #loading yolo net
         net = cv2.dnn.readNet("model_data/yolov4-tiny.weights","model_data/yolov4-tiny.cfg.txt")
-        #net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA) #Use with GPU?
+        #net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA) # Use with OpenCV compiled with CUDA
         net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
-        #net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA_FP16) #Use with GPU?
+        #net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA) # Use with OpenCV compiled with CUDA
         net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
         self.model = cv2.dnn_DetectionModel(net)
